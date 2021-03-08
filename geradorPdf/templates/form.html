@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-select.css' %}">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+
+
+</head>
+<body>
+
+
+
+
+<form>
+    <div class="container">
+        <div class="form-group">
+            <label for="name">Nome: </label>
+            <input type="text" class="form-control" id="name" name="name" autocomplete="nope">
+        </div>
+         <div class="form-group">
+            <label for="email">E-mail: </label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+         <div class="form-group">
+            <label for="phone">Telefone : </label>
+            <input type="number" class="form-control" id="phone" name="phone">
+        </div>
+         <div class="form-group">
+            <label for="sumary">Resumo: </label>
+            <input type="text" class="form-control" id="sumary" name="email">
+        </div>
+         <div class="form-group">
+            <label for="degree">Escolaridade: </label>
+            <select name="degree" id="degree">
+                <option value="Ensino Medio"> Ensino Médio </option>
+                <option value="Ensino Superior">Ensino Superior</option>
+                <option value="Pos graduacao">Pós Graduação </option>
+            </select>
+        </div>
+         <div class="form-group">
+            <label for="university">Universidade: </label>
+            <input type="text" class="form-control" id="university" name="university">
+        </div>
+         <div class="form-group">
+            <label for="previous">Emprego anterior: </label>
+             <textarea  class="form-control" id="previous" name="previous"> </textarea>
+        </div>
+         <div class="form-group">
+            <label for="skills">Habilidades: </label>
+            <input type="text" class="form-control" id="skills" name="habilidades">
+        </div>
+    </div>
+
+
+
+
+
+</form>
+
+</body>
+</html>
