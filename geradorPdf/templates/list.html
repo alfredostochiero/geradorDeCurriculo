@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+
+    <div class="container">
+        <div class="row m-5">
+            <div class="col-md-12">
+                <h1> Curriculos </h1><br><br>
+            </div>
+            {% for profile in profiles %}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>{{profile.name}}</h2>
+                </div>
+                <div class="col-md-6">
+                    <a href="{{profile.id}}"class="btn btn-success">Download</a>
+                    <hr>
+                </div>
+            </div>
+
+            {% endfor %}
+            <a href="{% url 'home' %}" class="btn btn-danger">Voltar</a>
+        </div>
+    </div>
+
+{% endblock body %}

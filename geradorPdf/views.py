@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from django.template import loader
 import io
 
+def home(request):
+    return render(request, 'home.html')
 
 
 def form(request):
@@ -27,6 +29,8 @@ def form(request):
 def resume(request,id):
 
     user_profile = Profile.objects.get(pk=id)
+    num = user_profile.phone_number
+    user_profile.phone_number = '('+num[0:2]+')'+num[3:]
     template = loader.get_template('resume.html')
     html = template.render({'user_profile':user_profile})
     options = {
@@ -43,6 +47,11 @@ def resume(request,id):
     response["Content-Disposition"] = 'attachment'
     filename = 'resumepdf'
     return response
+
+def list(request):
+    profiles = Profile.objects.all()
+    context = {'profiles':profiles}
+    return render(request, 'list.html', context)
 
 
 
