@@ -17,9 +17,9 @@ import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
-# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,9 +29,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '6)afzwwzp5pacgx2hkbxl6ng$kq3@&rbk_&d$0(@o9pj6z*tps'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://gerador-de-curriculo-alfredo.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'geradorDeCurriculo.wsgi.application'
 
 
 DATABASES = {
-    'default' : dj_database_url.config()
+    'default': dj_database_url.config()
 }
 
 
@@ -147,6 +147,7 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
 
 django_heroku.settings(locals())
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
