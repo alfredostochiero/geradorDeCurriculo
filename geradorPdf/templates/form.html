@@ -16,7 +16,7 @@
             </div>
              <div class="form-group">
                 <label for="phone">Telefone : </label>
-                <input type="tel" class="form-control" id="phone" name="phone">
+                <input type="number" class="form-control" id="phone" name="phone" maxlength="12">
             </div>
              <div class="form-group">
                 <label for="sumary">Resumo: </label>
@@ -42,9 +42,10 @@
                 <label for="skills">Habilidades: </label>
                 <input type="text" class="form-control" id="skills" name="skills">
             </div>
-            <input type="submit" value="Enviar" class="btn btn-success">
+            <input type="submit" value="Gerar Curriculo " class="btn btn-success">
 
-            <a href="{% url 'home' %}" class="btn btn-danger">Voltar</a>
+            <a href="{% url 'home' %}" class="btn btn-danger">Página Inicial </a>
+            <a href="{% url 'perfis' %}" class="btn btn-info">Ver Curriculos </a>
     </form>
 
 </div>
