@@ -28,7 +28,7 @@ SECRET_KEY = '6)afzwwzp5pacgx2hkbxl6ng$kq3@&rbk_&d$0(@o9pj6z*tps'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://gerador-de-curriculo-alfredo.herokuapp.com/']
 
 
 # Application definition
@@ -130,10 +130,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static/'),
 )
 
 
 django_heroku.settings(locals())
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
