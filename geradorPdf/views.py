@@ -4,6 +4,9 @@ import pdfkit
 from django.http import HttpResponse
 from django.template import loader
 import io
+import os, sys, subprocess, platform
+
+
 
 def home(request):
     return render(request, 'home.html')
@@ -28,6 +31,15 @@ def form(request):
 
 def resume(request,id):
 
+    if platform.system() == "Windows":
+        pdfkit_config = pdfkit.configuration(
+            wkhtmltopdf=os.environ.get('WKHTMLTOPDF_BINARY', 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'))
+    else:
+        os.environ['PATH'] += os.pathsep + os.path.dirname(sys.executable)
+        WKHTMLTOPDF_CMD = subprocess.Popen(['which', os.environ.get('WKHTMLTOPDF_BINARY', 'wkhtmltopdf')],
+                                           stdout=subprocess.PIPE).communicate()[0].strip()
+        pdfkit_config = pdfkit.configuration(wkhtmltopdf=WKHTMLTOPDF_CMD)
+
     user_profile = Profile.objects.get(pk=id)
     num = user_profile.phone_number
     user_profile.phone_number = '('+num[0:2]+')'+num[3:]
@@ -37,9 +49,9 @@ def resume(request,id):
         'page-size': 'Letter',
         'encoding': "UTF-8",
     }
-    config = pdfkit.configuration(wkhtmltopdf='C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe')
+    # config = pdfkit.configuration(wkhtmltopdf='C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe')
 
-    pdf = pdfkit.from_string(html,False,options,configuration=config)
+    pdf = pdfkit.from_string(html,False,options,configuration=pdfkit_config)
     context = {
         'user': user_profile
     }

@@ -13,3 +13,5 @@ pytz==2021.1
 soupsieve==2.2
 sqlparse==0.4.1
 whitenoise==5.2.0
+wkhtmltopdf-pack==0.12.3.0
+pdfkit==0.6.0
